@@ -1,0 +1,216 @@
+{
+  "name": "Public Organisation KYC Decision Tree",
+  "description": "Decision tree for KYC process of public organisations",
+  "children": [
+    {
+      "name": "Is this a new business relationship establishment?",
+      "children": [
+        {
+          "name": "Yes",
+          "children": [
+            {
+              "name": "Identification Process",
+              "children": [
+                {
+                  "name": "Is client a public organisation?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Simplified requirements",
+                      "requirements": "Only name and legal address required"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Standard identification process",
+                      "requirements": "Full identification and verification required"
+                    }
+                  ]
+                },
+                {
+                  "name": "Is client established in a high-risk jurisdiction?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Enhanced verification required",
+                      "requirements": "Additional supporting documents needed"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Standard verification",
+                      "requirements": "Standard document collection"
+                    }
+                  ]
+                },
+                {
+                  "name": "Does tax or mailing address differ from legal address?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "requirements": "Collect tax and mailing addresses"
+                    },
+                    {
+                      "name": "No",
+                      "requirements": "Only legal address needed"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "UBO Identification",
+              "children": [
+                {
+                  "name": "Is client a French territorial public authority?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Simplified UBO requirements",
+                      "requirements": "Only name and surname required, no verification needed"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Standard UBO identification",
+                      "requirements": "Identify natural person with highest executive control"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Legal Representatives & Signatories Verification",
+              "children": [
+                {
+                  "name": "Is client a French territorial authority?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Simplified verification",
+                      "requirements": "Limited to name and surname only"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Full verification required",
+                      "requirements": "Complete identity verification with supporting documents"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Business Relationship Understanding",
+              "requirements": "Collect information about purpose, products/services, and establishment channel"
+            },
+            {
+              "name": "Risk Assessment",
+              "children": [
+                {
+                  "name": "Is client a public organisation?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Simplified country risk assessment",
+                      "requirements": "Only country of establishment required"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Complete risk assessment",
+                      "requirements": "Full country risk assessment needed"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "No",
+          "children": [
+            {
+              "name": "Periodic Review Required?",
+              "children": [
+                {
+                  "name": "Is client A-rated and open in France?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "5-year review cycle",
+                      "requirements": "Review every 5 years"
+                    },
+                    {
+                      "name": "No",
+                      "description": "Different review cycle",
+                      "requirements": "Follow standard review schedule"
+                    }
+                  ]
+                },
+                {
+                  "name": "Has significant change increasing risk occurred?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "description": "Immediate review required",
+                      "requirements": "Conduct KYC review due to risk increase"
+                    },
+                    {
+                      "name": "No",
+                      "description": "No immediate review",
+                      "requirements": "Continue with regular review cycle"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Document Collection & Validation",
+      "children": [
+        {
+          "name": "Is document in language other than English or French?",
+          "children": [
+            {
+              "name": "Yes",
+              "description": "Translation required",
+              "requirements": "Certified translation needed"
+            },
+            {
+              "name": "No",
+              "description": "No translation needed"
+            }
+          ]
+        },
+        {
+          "name": "Is document K-bis or equivalent official register?",
+          "children": [
+            {
+              "name": "Yes",
+              "description": "3-month validity",
+              "requirements": "Must be dated within 3 months or confirmed as most recent"
+            },
+            {
+              "name": "No",
+              "description": "12-month validity",
+              "requirements": "Must be dated within 12 months or confirmed as most recent"
+            }
+          ]
+        },
+        {
+          "name": "Does law require document certification?",
+          "children": [
+            {
+              "name": "Yes",
+              "description": "Certification mandatory",
+              "requirements": "Document must be certified by qualified person"
+            },
+            {
+              "name": "No",
+              "description": "No certification required"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

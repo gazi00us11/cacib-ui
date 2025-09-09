@@ -1,0 +1,216 @@
+
+{
+  "name": "KYC Decision Tree",
+  "children": [
+    {
+      "name": "Is this the establishment of a new business relationship?",
+      "children": [
+        {
+          "name": "Yes",
+          "action": "Proceed with full KYC process"
+        },
+        {
+          "name": "No",
+          "children": [
+            {
+              "name": "Is this a periodic review?",
+              "children": [
+                {
+                  "name": "Yes",
+                  "children": [
+                    {
+                      "name": "Is the client A-rated and opened in France?",
+                      "children": [
+                        {
+                          "name": "Yes",
+                          "action": "Conduct 5-year review"
+                        },
+                        {
+                          "name": "No",
+                          "children": [
+                            {
+                              "name": "Has there been a significant change increasing risk?",
+                              "children": [
+                                {
+                                  "name": "Yes",
+                                  "action": "Conduct full review"
+                                },
+                                {
+                                  "name": "No",
+                                  "action": "No action needed"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Client Type Assessment",
+      "children": [
+        {
+          "name": "Is the client a public organization?",
+          "children": [
+            {
+              "name": "Yes",
+              "action": "Apply simplified requirements"
+            },
+            {
+              "name": "No",
+              "action": "Apply standard requirements"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Geographic Risk Assessment",
+      "children": [
+        {
+          "name": "Is the client established in a high-risk jurisdiction?",
+          "children": [
+            {
+              "name": "Yes",
+              "action": "Require enhanced verification and additional supporting documents"
+            },
+            {
+              "name": "No",
+              "action": "Apply standard verification"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Identification Requirements",
+      "action": "Collect legal name and legal address",
+      "children": [
+        {
+          "name": "Do tax or mailing addresses differ from legal address?",
+          "children": [
+            {
+              "name": "Yes",
+              "action": "Collect those additional addresses"
+            },
+            {
+              "name": "No",
+              "action": "Proceed to document collection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Document Collection",
+      "children": [
+        {
+          "name": "Is an official extract from register (K-bis or equivalent) available?",
+          "children": [
+            {
+              "name": "Yes",
+              "children": [
+                {
+                  "name": "Is it dated within 3 months?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "action": "Accept document"
+                    },
+                    {
+                      "name": "No",
+                      "action": "Confirm it's the most recent version"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "No",
+              "action": "Collect alternative official document proving legal existence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UBO Identification",
+      "children": [
+        {
+          "name": "Is the client a French territorial public authority?",
+          "children": [
+            {
+              "name": "Yes",
+              "action": "Collect only name and surname of UBO (no verification required)"
+            },
+            {
+              "name": "No",
+              "action": "Identify natural person with highest degree of executive control"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Legal Representatives Verification",
+      "children": [
+        {
+          "name": "Is someone claiming to act on behalf of the organization?",
+          "children": [
+            {
+              "name": "Yes",
+              "children": [
+                {
+                  "name": "Is the client a French territorial authority?",
+                  "children": [
+                    {
+                      "name": "Yes",
+                      "action": "Collect only name and surname"
+                    },
+                    {
+                      "name": "No",
+                      "action": "Verify identity with photo ID and authority documentation"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "No",
+              "action": "No representative verification needed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Document Language",
+      "children": [
+        {
+          "name": "Are any documents not in English or French?",
+          "children": [
+            {
+              "name": "Yes",
+              "action": "Require certified translations"
+            },
+            {
+              "name": "No",
+              "action": "Proceed with risk assessment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Risk Assessment",
+      "action": "Assess country of establishment risk, evaluate corruption risk separately from other financial security risks, determine final risk rating for periodic review scheduling"
+    }
+  ]
+}
